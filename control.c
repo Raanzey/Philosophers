@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 13:36:46 by yozlu             #+#    #+#             */
-/*   Updated: 2025/05/02 19:40:31 by yozlu            ###   ########.fr       */
+/*   Created: 2025/04/19 16:25:05 by yozlu             #+#    #+#             */
+/*   Updated: 2025/05/05 12:27:44 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	return (result * count);
+	result *= count;
+	return (result);
 }
 
 int check(char **str)
@@ -56,9 +57,7 @@ int check(char **str)
 		while (str[i][j])
 		{
 			if(ft_isdigit(str[i][j]) == 0)
-			{
             	return -1;
-			}
 			j++;
 		}
         i++;    
@@ -66,11 +65,10 @@ int check(char **str)
     i = 1;
     while (str[i])
     {
-        if (ft_atoi(str[i]) <= 0 || ft_atoi(str[0]) > 200)
-		{
+        if (ft_atoi(str[i]) <= 0 || ft_atoi(str[1]) > 200)
 			return -1;
-		}	
 		i++;
     }
     return 0;
 }
+	
