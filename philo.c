@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 13:08:29 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/05 18:11:07 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/06 16:05:20 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ int init_mutex(t_info *info)
     return 0;
 }
 
+void init_philo(t_philo *philo, t_info *info)
+{
+    int i;
+    i = 0;
+    while (i < info->philo_count)
+    {
+        philo[i].id = i + 1;
+        philo[i].eat_count = 0;
+        philo[i].info = info;
+        philo[i].left_fork = &info->fork[i];
+        philo[i].right_fork = &info->fork[(i + 1) % info->philo_count];
+        philo[i++].last_meal = 0;
+    }
+}
+
 void parse_args(t_info *info, char **av)
 {
     info->philo_count = ft_atoi(av[1]);
@@ -46,14 +61,18 @@ void parse_args(t_info *info, char **av)
 int main(int ac, char **av)
 {
     t_info *info;
+    t_philo *philo;
     
     info = malloc(sizeof(t_info));
     if (ac != 5 && ac != 6)
-        return -1;
+    return -1;
     if (check(av) != 0)
         return -1;  
     parse_args(info, av);
     if (init_mutex(info))
         return 1;
+    philo = malloc(sizeof(t_philo) * info->philo_count);
+    init_philo(philo, info);
+    start_philo(info, philo);
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 12:45:16 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/05 13:36:12 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/06 16:31:42 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ typedef struct s_philo
 
 
 int check(char **str);
+int	time_ms(void);
 
 #endif
