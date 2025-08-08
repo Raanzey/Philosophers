@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 13:08:29 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/06 16:05:20 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/08 04:55:07 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int ac, char **av)
     
     info = malloc(sizeof(t_info));
     if (ac != 5 && ac != 6)
-    return -1;
+        return -1;
     if (check(av) != 0)
         return -1;  
     parse_args(info, av);
@@ -73,6 +73,6 @@ int main(int ac, char **av)
         return 1;
     philo = malloc(sizeof(t_philo) * info->philo_count);
     init_philo(philo, info);
-    start_philo(info, philo);
+    start_thread(info, philo);
     return 0;
 }
