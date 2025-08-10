@@ -6,11 +6,28 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:25:05 by yozlu             #+#    #+#             */
-/*   Updated: 2025/05/05 12:27:44 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/10 19:50:50 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	time_ms(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+void	ft_usleep(long ms)
+{
+	long	start;
+
+	start = time_ms();
+	while ((time_ms() - start) < ms)
+		usleep(100);
+}
 
 int	ft_isdigit(int c)
 {
@@ -46,29 +63,29 @@ int	ft_atoi(const char *str)
 	return (result);
 }
 
-int check(char **str)
+int	check(char **str)
 {
-    int i;
-	int j;
-    i = 1;
-    while (str[i])
-    {
+	int	i;
+	int	j;
+
+	i = 1;
+	while (str[i])
+	{
 		j = 0;
 		while (str[i][j])
 		{
-			if(ft_isdigit(str[i][j]) == 0)
-            	return -1;
+			if (ft_isdigit(str[i][j]) == 0)
+				return (-1);
 			j++;
 		}
-        i++;    
-    }
-    i = 1;
-    while (str[i])
-    {
-        if (ft_atoi(str[i]) <= 0 || ft_atoi(str[1]) > 200)
-			return -1;
 		i++;
-    }
-    return 0;
+	}
+	i = 1;
+	while (str[i])
+	{
+		if (ft_atoi(str[i]) <= 0 || ft_atoi(str[1]) > 200)
+			return (-1);
+		i++;
+	}
+	return (0);
 }
-	
