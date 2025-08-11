@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:47:49 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/10 19:51:01 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/11 18:28:08 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,26 @@
 
 void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	print_state(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
-	print_state(philo, "has taken a fork");
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->left_fork);
+		print_state(philo, "has taken a fork");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->right_fork);
+		print_state(philo, "has taken a fork");
+	}
+	if (philo->id % 2 != 0)
+	{
+		pthread_mutex_lock(philo->left_fork);
+		print_state(philo, "has taken a fork");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->right_fork);
+		print_state(philo, "has taken a fork");
+	}
 }
 
 void	eat_and_sleep(t_philo *philo)

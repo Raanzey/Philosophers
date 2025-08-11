@@ -1,5 +1,5 @@
 NAME 		= philo
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror 
 SRCS		= philo.c philo_utils.c func.c control.c func_utils.c
 
 OBJECTS = $(SRCS:.c=.o)
