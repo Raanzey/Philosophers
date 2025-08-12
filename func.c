@@ -6,13 +6,11 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:28:00 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/12 17:06:09 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/12 17:07:55 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include "string.h"
-
 
 int	check_death(t_philo *philo, t_info *info, int i)
 {
