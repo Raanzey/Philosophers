@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 13:08:29 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/10 19:51:30 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/12 14:54:28 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_mutex(t_info *info)
 		i++;
 	}
 	if (pthread_mutex_init(&info->print_lock, NULL))
-		return (1);
+		return (1);	
 	if (pthread_mutex_init(&info->death_lock, NULL))
 		return (1);
 	return (0);

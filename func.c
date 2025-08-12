@@ -6,11 +6,13 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:28:00 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/10 19:52:44 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/12 17:06:09 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include "string.h"
+
 
 int	check_death(t_philo *philo, t_info *info, int i)
 {
@@ -23,8 +25,8 @@ int	check_death(t_philo *philo, t_info *info, int i)
 	pthread_mutex_unlock(&philo[i].meal_lock);
 	if ((now - last_meal) > info->time_to_die)
 	{
-		print_state(&philo[i], "died");
 		set_someone_died(info, 1);
+		print_state(&philo[i], "died");
 		return (1);
 	}
 	return (0);
@@ -55,6 +57,8 @@ void	print_state(t_philo *philo, char *msg)
 	time = time_ms() - philo->info->start_time;
 	if (!get_someone_died(philo->info))
 		printf("%ld %d %s\n", time, philo->id, msg);
+	else if (!strcmp(msg, "died"))
+		printf("%ld %d %s\n", time, philo->id, msg);
 	pthread_mutex_unlock(&philo->info->print_lock);
 }
 
@@ -70,4 +74,5 @@ void	destroy_all(t_info *info, t_philo *philo)
 		i++;
 	}
 	pthread_mutex_destroy(&info->print_lock);
+	pthread_mutex_destroy(&info->death_lock);
 }

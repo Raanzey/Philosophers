@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 12:45:16 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/10 19:53:09 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/12 16:16:29 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int					time_ms(void);
 int					ft_atoi(const char *str);
 int					start_thread(t_info *info, t_philo *philo);
 int					get_someone_died(t_info *info);
-int					check_death(t_philo *philo, t_info *info, int i);
+int					 check_death(t_philo *philo, t_info *info, int i);
 void				set_someone_died(t_info *info, int value);
 void				print_state(t_philo *philo, char *msg);
 void				ft_usleep(long ms);

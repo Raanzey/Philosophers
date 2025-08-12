@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:05:59 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/10 19:52:41 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/12 16:17:49 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	*monitor(void *arg)
 	while (!info->someone_died)
 	{
 		i = 0;
+		if (check_full(philo, info, &full_philos))
+			return (NULL);
 		while (i < info->philo_count)
 		{
 			if (check_death(philo, info, i))
 				return (NULL);
 			i++;
 		}
-		if (check_full(philo, info, &full_philos))
-			return (NULL);
 		ft_usleep(1);
 	}
 	return (NULL);
