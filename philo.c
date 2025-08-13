@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 13:08:29 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/12 17:08:03 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/13 16:56:30 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_philo(t_philo *philo, t_info *info)
 
 void	parse_args(t_info *info, char **av)
 {
+	info->someone_died = 0;
 	info->philo_count = ft_atoi(av[1]);
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
@@ -68,15 +69,22 @@ int	main(int ac, char **av)
 	t_philo	*philo;
 
 	info = malloc(sizeof(t_info));
+	if (!info)
+		return (1);
 	if (ac != 5 && ac != 6)
-		return (-1);
+		return (free(info), -1);
 	if (check(av) != 0)
-		return (-1);
+		return (free(info), -1);
 	parse_args(info, av);
 	if (init_mutex(info))
-		return (1);
+		return (free(info), 1);
 	philo = malloc(sizeof(t_philo) * info->philo_count);
+	if (!philo)
+		return (free(info), 1);
 	init_philo(philo, info);
 	start_thread(info, philo);
+	free(info->fork);
+	free(info);
+	free(philo);
 	return (0);
 }

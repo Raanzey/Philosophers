@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 16:28:00 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/12 17:07:55 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/13 13:45:37 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_state(t_philo *philo, char *msg)
 	time = time_ms() - philo->info->start_time;
 	if (!get_someone_died(philo->info))
 		printf("%ld %d %s\n", time, philo->id, msg);
-	else if (!strcmp(msg, "died"))
+	else if (!ft_strcmp(msg, "died"))
 		printf("%ld %d %s\n", time, philo->id, msg);
 	pthread_mutex_unlock(&philo->info->print_lock);
 }

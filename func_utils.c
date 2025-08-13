@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:47:49 by yozlu             #+#    #+#             */
-/*   Updated: 2025/08/12 15:02:25 by yozlu            ###   ########.fr       */
+/*   Updated: 2025/08/13 14:00:12 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,14 @@ void	eat_and_sleep(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 	print_state(philo, "is sleeping");
 	ft_usleep(philo->info->time_to_sleep);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
